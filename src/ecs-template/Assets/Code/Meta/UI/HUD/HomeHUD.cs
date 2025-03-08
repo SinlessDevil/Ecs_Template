@@ -1,5 +1,4 @@
-﻿using Code.Gameplay.Windows;
-using Code.Infrastructure.States.GameStates;
+﻿using Code.Infrastructure.States.GameStates;
 using Code.Infrastructure.States.StateMachine;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,13 +13,11 @@ namespace Code.Meta.UI.HUD
         public Button StartBattleButton;
 
         private IGameStateMachine _stateMachine;
-        private IWindowService _windowService;
 
         [Inject]
-        private void Construct(IGameStateMachine gameStateMachine, IWindowService windowService)
+        private void Construct(IGameStateMachine gameStateMachine)
         {
             _stateMachine = gameStateMachine;
-            _windowService = windowService;
         }
 
         private void Awake()
