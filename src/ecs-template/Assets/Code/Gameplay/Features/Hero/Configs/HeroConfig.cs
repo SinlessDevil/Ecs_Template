@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Code.Gameplay.Features.Hero.Configs
 {
-    [CreateAssetMenu(menuName = "ECS Survivors/Heroes", fileName = "HeroConfig")]
+    [CreateAssetMenu(menuName = "ECS/Heroes", fileName = "HeroConfig")]
     public class HeroConfig : ScriptableObject
     {
         public float Hp = 100;

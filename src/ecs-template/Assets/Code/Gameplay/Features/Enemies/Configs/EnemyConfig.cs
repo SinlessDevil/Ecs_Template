@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Gameplay.Features.Enemies.Configs
 {
-    [CreateAssetMenu(menuName = "ECS Survivors/Enemies", fileName = "EnemyConfig")]
+    [CreateAssetMenu(menuName = "ECS/Enemies", fileName = "EnemyConfig")]
     public class EnemyConfig : ScriptableObject
     {
         public EnemyTypeId EnemyTypeId;
