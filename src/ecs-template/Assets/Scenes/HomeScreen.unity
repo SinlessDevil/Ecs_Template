@@ -614,6 +614,54 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1407114854}
     m_Modifications:
+    - target: {fileID: 73721197092733142, guid: b0488b8f98f9ba84e833022729332b01, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 666.4516
+      objectReference: {fileID: 0}
+    - target: {fileID: 73721197092733142, guid: b0488b8f98f9ba84e833022729332b01, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 222.1505
+      objectReference: {fileID: 0}
+    - target: {fileID: 73721197092733142, guid: b0488b8f98f9ba84e833022729332b01, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 73721197092733142, guid: b0488b8f98f9ba84e833022729332b01, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 189.90002
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364739813482646759, guid: b0488b8f98f9ba84e833022729332b01, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 134
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364739813482646759, guid: b0488b8f98f9ba84e833022729332b01, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 105
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723680984348353426, guid: b0488b8f98f9ba84e833022729332b01, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723680984348353426, guid: b0488b8f98f9ba84e833022729332b01, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723680984348353426, guid: b0488b8f98f9ba84e833022729332b01, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723680984348353426, guid: b0488b8f98f9ba84e833022729332b01, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723680984348353426, guid: b0488b8f98f9ba84e833022729332b01, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3723680984348353426, guid: b0488b8f98f9ba84e833022729332b01, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4592177899768543112, guid: b0488b8f98f9ba84e833022729332b01, type: 3}
       propertyPath: m_Name
       value: HomeHUD
