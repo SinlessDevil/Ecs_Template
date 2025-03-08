@@ -1,4 +1,4 @@
-# Ecs_Survivors
+# Ecs_Template
 
 ## Steps to Set Up ECS
 
