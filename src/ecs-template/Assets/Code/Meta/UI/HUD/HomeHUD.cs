@@ -9,7 +9,7 @@ namespace Code.Meta.UI.HUD
 {
     public class HomeHUD : MonoBehaviour
     {
-        private const string BattleSceneName = "Meadow";
+        private const string BattleSceneName = "GameScene";
 
         public Button StartBattleButton;
 

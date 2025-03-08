@@ -16,8 +16,5 @@ namespace Code.Gameplay.Common.Visuals.StatusVisuals
         
         void ApplyInvulnerability();
         void UnapplyInvulnerability();
-        
-        void ApplyHex();
-        void UnapplyHex();
     }
 }

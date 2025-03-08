@@ -1,4 +1,3 @@
-using Code.Gameplay.Features.Visuals.Behaviors;
 using Code.Infrastructure.AssetManagement;
 using UnityEngine;
 using Zenject;
@@ -7,7 +6,7 @@ namespace Code.Gameplay.Features.Visuals.Factory
 {
     public class VisualFactory : IVisualFactory
     {
-        private const string VisualPrefabPath = "Prefabs/Visuals/Sheep";
+        private const string VisualPrefabPath = "Prefabs/Visuals/Visual";
         
         private readonly IInstantiator _instantiator;
         private readonly IAssetProvider _assetProvider;
@@ -18,15 +17,15 @@ namespace Code.Gameplay.Features.Visuals.Factory
             _assetProvider = assetProvider;
         }
         
-        public Sheep CreateSheep(Vector3 at, Transform parent)
+        public Visual CreateVisual(Vector3 at, Transform parent)
         {
-            var sheep = _instantiator.InstantiatePrefabForComponent<Sheep>(
-                _assetProvider.LoadAsset<Sheep>(VisualPrefabPath));
+            var visual = _instantiator.InstantiatePrefabForComponent<Visual>(
+                _assetProvider.LoadAsset<Visual>(VisualPrefabPath));
 
-            sheep.transform.SetParent(parent);
-            sheep.transform.localPosition = at;
+            visual.transform.SetParent(parent);
+            visual.transform.localPosition = at;
 
-            return sheep;
+            return visual;
         }
     }
 }

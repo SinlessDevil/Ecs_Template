@@ -1,5 +1,4 @@
-﻿using Code.Gameplay.Features.Visuals.Behaviors;
-using Code.Gameplay.Features.Visuals.Factory;
+﻿using Code.Gameplay.Features.Visuals.Factory;
 using UnityEngine;
 using Zenject;
 using DG.Tweening;
@@ -39,8 +38,7 @@ namespace Code.Gameplay.Common.Visuals.StatusVisuals
             AffectsAnimator = true,
             AnimatorSpeed = 0
         };
-
-        private Sheep _sheep;
+        
         private IVisualFactory _visualFactory;
         
         [Inject]
@@ -104,26 +102,6 @@ namespace Code.Gameplay.Common.Visuals.StatusVisuals
 
         public void ApplyInvulnerability() => ApplyEffect(InvulnerabilityEffect);
         public void UnapplyInvulnerability() => UnapplyEffect();
-
-        public void ApplyHex()
-        {
-            if(_sheep != null)
-                return;
-            
-            var sheep = _visualFactory.CreateSheep(Vector3.zero, ParentVisual);
-            _sheep = sheep;
-            
-            _sheep.PlayBouncing();
-            
-            Renderer.enabled = false;
-        }
-
-        public void UnapplyHex()
-        {
-            Destroy(_sheep.gameObject);
-            _sheep = null;
-            
-            Renderer.enabled = true;
-        }
+        
     }
 }

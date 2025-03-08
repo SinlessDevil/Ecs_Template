@@ -20,7 +20,6 @@ namespace Code.Gameplay.Windows
 
         public BaseWindow CreateWindow(WindowId windowId)
         {
-            Debug.Log("Create window");
             return _instantiator.InstantiatePrefabForComponent<BaseWindow>(PrefabFor(windowId), _uiRoot);   
         }
 
