@@ -1,4 +1,6 @@
 ﻿using Code.Common.Destruct;
+using Code.Gameplay.Features.EffectApplication;
+using Code.Gameplay.Features.Effects.Systems;
 using Code.Gameplay.Features.Enemies;
 using Code.Gameplay.Features.Hero;
 using Code.Gameplay.Features.LifeTime;
@@ -25,7 +27,10 @@ namespace Code.Gameplay
             Add(system.Create<MovementFeature>());
             
             Add(system.Create<CollectTargetFeature>());
-
+            Add(system.Create<EffectApplicationFeature>());
+            
+            Add(system.Create<EffectFeature>());
+            
             Add(system.Create<GameOverOnHeroDeathSystem>());
             
             Add(system.Create<ProcessDestructedFeature>());

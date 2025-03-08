@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Waves:
   - LevelRequirement: 0
-    SpawnInterval: 3
+    SpawnInterval: 10
     Enemies:
     - EnemyType: 1
-      MinCount: 2
-      MaxCount: 4
+      MinCount: 1
+      MaxCount: 2

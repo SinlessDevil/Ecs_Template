@@ -14,24 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyTypeId: 1
   Levels:
-  - Hp: 3
+  - Hp: 1.5
     Speed: 1
     RadiusToCollectTargets: 0.3
     CollectTargetsInterval: 0.5
     EffectSetups:
     - EffectTypeId: 1
       Value: 1
+    RadiusToFindEnemy: 3
+    CreateEffectInterval: 3
   - Hp: 6
-    Speed: 2
+    Speed: 1.5
     RadiusToCollectTargets: 0.3
     CollectTargetsInterval: 0.5
     EffectSetups:
     - EffectTypeId: 1
       Value: 2
+    RadiusToFindEnemy: 3
+    CreateEffectInterval: 3
   - Hp: 10
-    Speed: 2
+    Speed: 1.5
     RadiusToCollectTargets: 0.3
     CollectTargetsInterval: 0.5
     EffectSetups:
     - EffectTypeId: 1
       Value: 3
+    RadiusToFindEnemy: 3
+    CreateEffectInterval: 3

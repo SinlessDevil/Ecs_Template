@@ -57,6 +57,7 @@ namespace Code.Gameplay.Features.Enemies.Factory
                 .AddSpeed(enemyLevel.Speed)
                 .AddCurrentHp(enemyLevel.Hp)
                 .AddMaxHp(enemyLevel.Hp)
+                .AddEffectSetups(enemyLevel.EffectSetups)
                 .With(x => x.isEnemy = true)
                 .With(x => x.isTurnedAlongDirection = true)
                 .With(x => x.isMovementAvailable = true);

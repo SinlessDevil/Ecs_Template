@@ -3,6 +3,7 @@ using Code.Gameplay.Common.Collisions;
 using Code.Gameplay.Common.Physics;
 using Code.Gameplay.Common.Random;
 using Code.Gameplay.Common.Time;
+using Code.Gameplay.Features.Effects.Factory;
 using Code.Gameplay.Features.Enemies.Factory;
 using Code.Gameplay.Features.Hero.Factory;
 using Code.Gameplay.Features.Visuals.Factory;
@@ -119,6 +120,7 @@ namespace Code.Infrastructure.Installers
             Container.Bind<IEnemyFactory>().To<EnemyFactory>().AsSingle();
             Container.Bind<IVisualFactory>().To<VisualFactory>().AsSingle();
             Container.Bind<IShopItemFactory>().To<ShopItemFactory>().AsSingle();
+            Container.Bind<IEffectFactory>().To<EffectFactory>().AsSingle();
         }
 
         private void BindUIFactories()
