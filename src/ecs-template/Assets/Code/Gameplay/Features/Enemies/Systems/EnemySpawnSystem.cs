@@ -13,7 +13,7 @@ namespace Code.Gameplay.Features.Enemies.Systems
     public class EnemySpawnSystem : IExecuteSystem
     {
         private const float SpawnDistanceGap = 0.5f;
-        private const float EnemySpawnTimer = 1;
+        private const float EnemySpawnTimer = 10;
         
         private readonly ITimeService _timeService;
         private readonly IEnemyFactory _enemyFactory;
@@ -61,7 +61,9 @@ namespace Code.Gameplay.Features.Enemies.Systems
         {
             int currentLevel = 1;
             EnemyWave wave = _staticDataService.GetCurrentWave(currentLevel);
-            if (wave == null) return;
+            
+            if (wave == null) 
+                return;
 
             Vector2 spawnPosition = GetSpawnPosition(heroPosition);
             foreach (var enemyData in wave.Enemies)
