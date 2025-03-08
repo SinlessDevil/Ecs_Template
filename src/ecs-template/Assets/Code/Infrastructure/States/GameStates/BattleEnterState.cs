@@ -9,12 +9,13 @@ namespace Code.Infrastructure.States.GameStates
 {
     public class BattleEnterState : SimpleState
     {
+        private BattleFeature _battleFeature;
+        
         private readonly IGameStateMachine _stateMachine;
         private readonly ILevelDataProvider _levelDataProvider;
         private readonly IHeroFactory _heroFactory;
         private readonly ISystemFactory _systems;
         private readonly GameContext _gameContext;
-        private BattleFeature _battleFeature;
 
         public BattleEnterState(
             IGameStateMachine stateMachine,

@@ -6,6 +6,7 @@ using Code.Gameplay.Features.Enemies.Configs;
 using Code.Gameplay.Features.Hero.Configs;
 using Code.Gameplay.Windows;
 using Code.Gameplay.Windows.Configs;
+using Code.Infrastructure.StaticDatas;
 using Code.Meta.Features.AfkGain.Configs;
 using UnityEngine;
 
@@ -17,6 +18,7 @@ namespace Code.Gameplay.StaticData
         private Dictionary<WindowId, GameObject> _windowPrefabsById;
         
         private HeroConfig _heroConfig;
+        private GameConfig _gameConfig;
         private EnemySpawnConfig _enemySpawnConfig;
         private AfkGainConfig _afkGainConfig;
 
@@ -27,6 +29,7 @@ namespace Code.Gameplay.StaticData
             LoadWindows();
             LoadEnemySpawnConfig();
             LoadAfkGainConfig();
+            LoadGameConfig();
         }
         
         public AfkGainConfig AfkGainConfig => _afkGainConfig;
@@ -35,6 +38,8 @@ namespace Code.Gameplay.StaticData
         
         public HeroConfig HeroConfig => _heroConfig;
 
+        public GameConfig GameConfig => _gameConfig;
+        
         public EnemyWave GetCurrentWave(int level)
         {
             for (int i = _enemySpawnConfig.Waves.Count - 1; i >= 0; i--)
@@ -110,6 +115,11 @@ namespace Code.Gameplay.StaticData
         private void LoadAfkGainConfig()
         {
             _afkGainConfig = Resources.Load<AfkGainConfig>("Configs/AfkGain/AfkGainConfig");
+        }
+        
+        private void LoadGameConfig()
+        {
+            _gameConfig = Resources.Load<GameConfig>("Configs/Game/GameConfig");
         }
     }
 }

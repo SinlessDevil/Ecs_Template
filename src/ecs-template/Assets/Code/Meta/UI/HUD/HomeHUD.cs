@@ -1,4 +1,5 @@
-﻿using Code.Infrastructure.States.GameStates;
+﻿using Code.Gameplay.StaticData;
+using Code.Infrastructure.States.GameStates;
 using Code.Infrastructure.States.StateMachine;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,16 +9,16 @@ namespace Code.Meta.UI.HUD
 {
     public class HomeHUD : MonoBehaviour
     {
-        private const string BattleSceneName = "GameScene";
-
         public Button StartBattleButton;
 
         private IGameStateMachine _stateMachine;
-
+        private IStaticDataService _staticDataService;
+        
         [Inject]
-        private void Construct(IGameStateMachine gameStateMachine)
+        private void Construct(IGameStateMachine gameStateMachine, IStaticDataService staticDataService)
         {
             _stateMachine = gameStateMachine;
+            _staticDataService = staticDataService;
         }
 
         private void Awake()
@@ -26,6 +27,6 @@ namespace Code.Meta.UI.HUD
         }
 
         private void EnterBattleLoadingState() =>
-            _stateMachine.Enter<LoadingBattleState, string>(BattleSceneName);
+            _stateMachine.Enter<LoadingBattleState, string>(_staticDataService.GameConfig.GameScene);
     }
 }
