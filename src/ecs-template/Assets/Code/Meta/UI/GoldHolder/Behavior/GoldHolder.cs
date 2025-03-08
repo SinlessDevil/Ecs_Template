@@ -1,14 +1,15 @@
 using Code.Meta.UI.GoldHolder.Service;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
-using TMPro;
+using UnityEngine.UI;
 
 namespace Code.Meta.UI.GoldHolder.Behavior
 {
     public class GoldHolder : MonoBehaviour
     {
-        public TextMeshProUGUI goldText;
-        public TextMeshProUGUI BoostText;
+        [FormerlySerializedAs("goldText")] [SerializeField] private Text _goldText;
+        [FormerlySerializedAs("BoostText")] [SerializeField] private Text _BoostText;
         
         private IStorageUIService _storage;
 
@@ -33,11 +34,11 @@ namespace Code.Meta.UI.GoldHolder.Behavior
             switch (boost)
             {
                 case > 0:
-                    BoostText.gameObject.SetActive(true);
-                    BoostText.text = boost.ToString("+0%");
+                    _BoostText.gameObject.SetActive(true);
+                    _BoostText.text = boost.ToString("+0%");
                     break;
                 default:
-                    BoostText.gameObject.SetActive(false);
+                    _BoostText.gameObject.SetActive(false);
                     break;
             }
         }
@@ -49,6 +50,6 @@ namespace Code.Meta.UI.GoldHolder.Behavior
         }
         
         private void OnGoldChanged() =>
-            goldText.text = _storage.CurrentGold.ToString("0");
+            _goldText.text = _storage.CurrentGold.ToString("0");
     }
 }
