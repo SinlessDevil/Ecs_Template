@@ -9,7 +9,5 @@ namespace Code.Gameplay.Features.Loot
     
     [Game] public class PickupRadius : IComponent { public float Value; }
     
-    [Game] public class PickupRadiusS : IComponent { public float Value; }
-    
     [Game] public class Experience : IComponent { public float Value; }
 }
