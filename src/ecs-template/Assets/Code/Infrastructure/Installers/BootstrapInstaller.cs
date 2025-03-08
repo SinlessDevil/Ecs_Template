@@ -1,21 +1,10 @@
-using Code.Common.EntityIndices;
 using Code.Gameplay.Cameras.Provider;
 using Code.Gameplay.Common.Collisions;
 using Code.Gameplay.Common.Physics;
 using Code.Gameplay.Common.Random;
 using Code.Gameplay.Common.Time;
-using Code.Gameplay.Features.Abilities.Factory;
-using Code.Gameplay.Features.Abilities.Upgrade;
-using Code.Gameplay.Features.Armaments.Factory;
-using Code.Gameplay.Features.Effects.Factory;
-using Code.Gameplay.Features.Enchants.UIFactories;
 using Code.Gameplay.Features.Enemies.Factory;
 using Code.Gameplay.Features.Hero.Factory;
-using Code.Gameplay.Features.LevelUp.Services;
-using Code.Gameplay.Features.LevelUp.UIFactory;
-using Code.Gameplay.Features.Loot.Factory;
-using Code.Gameplay.Features.Statuses.Applier;
-using Code.Gameplay.Features.Statuses.Factory;
 using Code.Gameplay.Features.Visuals.Factory;
 using Code.Gameplay.Input.Service;
 using Code.Gameplay.Levels;
@@ -55,7 +44,6 @@ namespace Code.Infrastructure.Installers
             BindUIService();
             BindGameplayFactories();
             BindUIFactories();
-            BindEntityIndices();
             BindStateMachine();
             BindStateFactory();
             BindGameStates();
@@ -110,9 +98,6 @@ namespace Code.Infrastructure.Installers
         {
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
             Container.Bind<ILevelDataProvider>().To<LevelDataProvider>().AsSingle();
-            Container.Bind<IStatusApplier>().To<StatusApplier>().AsSingle();
-            Container.Bind<ILevelUpService>().To<LevelUpService>().AsSingle();
-            Container.Bind<IAbilityUpgradeService>().To<AbilityUpgradeService>().AsSingle();
         }
         
         private void BindCameraProvider()
@@ -129,11 +114,6 @@ namespace Code.Infrastructure.Installers
         
         private void BindGameplayFactories()
         {
-            Container.Bind<ILootFactory>().To<LootFactory>().AsSingle();
-            Container.Bind<IStatusFactory>().To<StatusFactory>().AsSingle();
-            Container.Bind<IEffectFactory>().To<EffectFactory>().AsSingle();
-            Container.Bind<IAbilityFactory>().To<AbilityFactory>().AsSingle();
-            Container.Bind<IArmamentFactory>().To<ArmamentFactory>().AsSingle();
             Container.Bind<IEntityViewFactory>().To<EntityViewFactory>().AsSingle();
             Container.Bind<IHeroFactory>().To<HeroFactory>().AsSingle();
             Container.Bind<IEnemyFactory>().To<EnemyFactory>().AsSingle();
@@ -144,15 +124,8 @@ namespace Code.Infrastructure.Installers
         private void BindUIFactories()
         {
             Container.Bind<IWindowFactory>().To<WindowFactory>().AsSingle();
-            Container.Bind<IEnchantUIFactory>().To<EnchantUIFactory>().AsSingle();
-            Container.Bind<IAbilityUIFactory>().To<AbilityUIFactory>().AsSingle();
             Container.Bind<IShopUIFactory>().To<ShopUIFactory>().AsSingle();
 
-        }
-        
-        private void BindEntityIndices()
-        {
-            Container.BindInterfacesAndSelfTo<GameEntityIndices>().AsSingle();
         }
         
         private void BindStateMachine()

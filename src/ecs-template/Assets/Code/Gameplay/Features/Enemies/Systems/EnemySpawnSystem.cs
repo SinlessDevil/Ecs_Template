@@ -3,7 +3,6 @@ using Code.Gameplay.Cameras.Provider;
 using Code.Gameplay.Common.Time;
 using Code.Gameplay.Features.Enemies.Factory;
 using Code.Gameplay.Features.Enemies.Configs;
-using Code.Gameplay.Features.LevelUp.Services;
 using Code.Gameplay.StaticData;
 using Entitas;
 using UnityEngine;
@@ -19,7 +18,6 @@ namespace Code.Gameplay.Features.Enemies.Systems
         private readonly ITimeService _timeService;
         private readonly IEnemyFactory _enemyFactory;
         private readonly ICameraProvider _cameraProvider;
-        private readonly ILevelUpService _levelUpService;
         private readonly IStaticDataService _staticDataService;
 
         private readonly IGroup<GameEntity> _timers;
@@ -29,13 +27,11 @@ namespace Code.Gameplay.Features.Enemies.Systems
             ITimeService timeService, 
             IEnemyFactory enemyFactory,
             ICameraProvider cameraProvider,
-            ILevelUpService levelUpService,
             IStaticDataService staticDataService)
         {
             _timeService = timeService;
             _enemyFactory = enemyFactory;
             _cameraProvider = cameraProvider;
-            _levelUpService = levelUpService;
             _staticDataService = staticDataService;
 
             _timers = game.GetGroup(GameMatcher
@@ -63,7 +59,7 @@ namespace Code.Gameplay.Features.Enemies.Systems
 
         private void SpawnEnemies(Vector2 heroPosition)
         {
-            int currentLevel = _levelUpService.CurrentLevel;
+            int currentLevel = 1;
             EnemyWave wave = _staticDataService.GetCurrentWave(currentLevel);
             if (wave == null) return;
 

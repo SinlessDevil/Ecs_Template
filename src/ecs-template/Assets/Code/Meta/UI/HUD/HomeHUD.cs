@@ -12,7 +12,6 @@ namespace Code.Meta.UI.HUD
         private const string BattleSceneName = "Meadow";
 
         public Button StartBattleButton;
-        public Button ShopButton;
 
         private IGameStateMachine _stateMachine;
         private IWindowService _windowService;
@@ -27,15 +26,9 @@ namespace Code.Meta.UI.HUD
         private void Awake()
         {
             StartBattleButton.onClick.AddListener(EnterBattleLoadingState);
-            ShopButton.onClick.AddListener(OnShopButtonClicked);
         }
 
         private void EnterBattleLoadingState() =>
             _stateMachine.Enter<LoadingBattleState, string>(BattleSceneName);
-
-        private void OnShopButtonClicked()
-        {
-            _windowService.Open(WindowId.ShopWindow);
-        }
     }
 }

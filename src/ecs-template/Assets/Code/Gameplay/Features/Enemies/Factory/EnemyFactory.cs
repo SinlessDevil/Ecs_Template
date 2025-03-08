@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Code.Common.Entity;
 using Code.Common.Extensions;
-using Code.Gameplay.Features.CharacterStats;
 using Code.Gameplay.Features.Enemies.Configs;
 using Code.Gameplay.StaticData;
 using Code.Infrastructure.Identifiers;
@@ -28,9 +27,6 @@ namespace Code.Gameplay.Features.Enemies.Factory
             return typeId switch
             {
                 EnemyTypeId.Goblin => CreateGoblin(typeId, at, level),
-                EnemyTypeId.GoblinBig => CreateGoblinBig(typeId, at, level),
-                EnemyTypeId.GoblinShamanHealer => CreateGoblinShamanHealer(typeId, at, level),
-                EnemyTypeId.GoblinShamanBuffer => CreateGoblinShamanBuffer(typeId, at, level),
                 _ => throw new Exception($"Enemy with type id {typeId} does not exist")
             };
         }
@@ -48,65 +44,19 @@ namespace Code.Gameplay.Features.Enemies.Factory
                 .AddCollectTargetsTimer(0)
                 .AddLayerMask(CollisionLayer.Hero.AsMask());
         }
-
-        private GameEntity CreateGoblinBig(EnemyTypeId typeId, Vector3 at, int level)
-        {
-            EnemyLevel enemyLevel = _staticDataService.GetEnemyLevel(typeId, level);
-            
-            string viewPath = "Gameplay/Enemies/Goblins/Torch/goblin_torch_blue_big";
-            
-            return CreateEnemyEntity(typeId, at, viewPath, enemyLevel)
-                .AddTargetsBuffer(new List<int>(1))
-                .AddRadius(enemyLevel.RadiusToCollectTargets)
-                .AddCollectTargetsInterval(enemyLevel.CollectTargetsInterval)
-                .AddCollectTargetsTimer(0)
-                .AddLayerMask(CollisionLayer.Hero.AsMask());
-        }
         
-        private GameEntity CreateGoblinShamanHealer(EnemyTypeId typeId, Vector3 at, int level)
-        {
-            EnemyLevel enemyLevel = _staticDataService.GetEnemyLevel(typeId, level);
-            
-            string viewPath = "Gameplay/Enemies/Goblins/Torch/goblin_torch_blue_shaman_healer";
-            
-            return CreateEnemyEntity(typeId, at, viewPath, enemyLevel)
-                .With(x => x.isEnemyShaman = true)
-                .AddRadiusToFindEnemy(enemyLevel.RadiusToFindEnemy)
-                .AddCreateEffectInterval(enemyLevel.CreateEffectInterval);
-        }
-
-        private GameEntity CreateGoblinShamanBuffer(EnemyTypeId typeId, Vector3 at, int level)
-        {
-            EnemyLevel enemyLevel = _staticDataService.GetEnemyLevel(typeId, level);
-            
-            string viewPath = "Gameplay/Enemies/Goblins/Torch/goblin_torch_blue_shaman_buffer";
-            
-            return CreateEnemyEntity(typeId, at, viewPath, enemyLevel)
-                .With(x => x.isEnemyShaman = true)
-                .AddRadiusToFindEnemy(enemyLevel.RadiusToFindEnemy)
-                .AddCreateEffectInterval(enemyLevel.CreateEffectInterval);
-        }
         
         private GameEntity CreateEnemyEntity(EnemyTypeId typeId, Vector3 at, string viewPath, EnemyLevel enemyLevel)
         {
-            Dictionary<Stats, float> baseStats = InitStats.EmptyStatDictionary()
-                .With(x => x[Stats.Speed] = enemyLevel.Speed)
-                .With(x => x[Stats.MaxHp] = enemyLevel.Hp)
-                .With(x => x[Stats.Damage] = 1);
-            
             return CreateEntity.Empty()
                 .AddId(_identifierService.Next())
                 .AddEnemyTypeID(typeId)
                 .AddWorldPosition(at)
                 .AddDirection(Vector2.zero)
-                .AddBaseStats(baseStats)
-                .AddStatModifiers(InitStats.EmptyStatDictionary())
-                .AddSpeed(baseStats[Stats.Speed])
-                .AddCurrentHp(baseStats[Stats.MaxHp])
-                .AddMaxHp(baseStats[Stats.MaxHp])
-                .AddEffectSetups(enemyLevel.EffectSetups)
-                .AddStatusSetups(enemyLevel.StatusSetups)
                 .AddViewPath(viewPath)
+                .AddSpeed(enemyLevel.Speed)
+                .AddCurrentHp(enemyLevel.Hp)
+                .AddMaxHp(enemyLevel.Hp)
                 .With(x => x.isEnemy = true)
                 .With(x => x.isTurnedAlongDirection = true)
                 .With(x => x.isMovementAvailable = true);
