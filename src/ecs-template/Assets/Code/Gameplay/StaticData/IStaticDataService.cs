@@ -4,7 +4,6 @@ using Code.Gameplay.Features.Enemies.Configs;
 using Code.Gameplay.Features.Hero.Configs;
 using Code.Gameplay.Windows;
 using Code.Meta.Features.AfkGain.Configs;
-using Code.Meta.UI.Shop.Items;
 using UnityEngine;
 
 namespace Code.Gameplay.StaticData
@@ -23,7 +22,5 @@ namespace Code.Gameplay.StaticData
         public EnemyLevel GetEnemyLevel(EnemyTypeId enemyTypeId, int level);
         
         public GameObject GetWindowPrefab(WindowId windowId);
-        List<ShopItemConfig> GetShopItemConfigs();
-        ShopItemConfig GetShopItemConfig(ShopItemId shopItemId);
     }
 }

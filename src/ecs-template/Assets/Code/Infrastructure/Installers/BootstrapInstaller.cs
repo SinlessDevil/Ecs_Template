@@ -20,8 +20,6 @@ using Code.Infrastructure.States.StateMachine;
 using Code.Infrastructure.Systems;
 using Code.Infrastructure.View.Factory;
 using Code.Meta.UI.GoldHolder.Service;
-using Code.Meta.UI.Shop.Service;
-using Code.Meta.UI.Shop.UIFactory;
 using Code.Progress.Provider;
 using Code.Progress.SaveLoad;
 using RSG;
@@ -110,7 +108,6 @@ namespace Code.Infrastructure.Installers
         {
             Container.Bind<IWindowService>().To<WindowService>().AsSingle();
             Container.Bind<IStorageUIService>().To<StorageUIService>().AsSingle();
-            Container.Bind<IShopUIService>().To<ShopUIService>().AsSingle();
         }
         
         private void BindGameplayFactories()
@@ -119,15 +116,12 @@ namespace Code.Infrastructure.Installers
             Container.Bind<IHeroFactory>().To<HeroFactory>().AsSingle();
             Container.Bind<IEnemyFactory>().To<EnemyFactory>().AsSingle();
             Container.Bind<IVisualFactory>().To<VisualFactory>().AsSingle();
-            Container.Bind<IShopItemFactory>().To<ShopItemFactory>().AsSingle();
             Container.Bind<IEffectFactory>().To<EffectFactory>().AsSingle();
         }
 
         private void BindUIFactories()
         {
             Container.Bind<IWindowFactory>().To<WindowFactory>().AsSingle();
-            Container.Bind<IShopUIFactory>().To<ShopUIFactory>().AsSingle();
-
         }
         
         private void BindStateMachine()
