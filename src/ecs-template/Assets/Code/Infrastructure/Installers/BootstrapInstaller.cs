@@ -23,6 +23,7 @@ using Code.Meta.UI.GoldHolder.Service;
 using Code.Progress.Provider;
 using Code.Progress.SaveLoad;
 using RSG;
+using Services.SFX;
 using UnityEngine;
 using Zenject;
 
@@ -30,8 +31,12 @@ namespace Code.Infrastructure.Installers
 {
     public class BootstrapInstaller : MonoInstaller, ICoroutineRunner, IInitializable
     {
+        [SerializeField] private SoundService _soundService;
+        [SerializeField] private MusicService _musicService;
+        
         public override void InstallBindings()
         {
+            BindMonoServices();
             BindInputService();
             BindInfrastructureServices();
             BindAssetManagementServices();
@@ -55,6 +60,12 @@ namespace Code.Infrastructure.Installers
             Container.Resolve<IGameStateMachine>().Enter<BootstrapState>();
         }
 
+        private void BindMonoServices()
+        {
+            Container.Bind<ISoundService>().FromMethod(() => Container.InstantiatePrefabForComponent<ISoundService>(_soundService)).AsSingle();
+            Container.Bind<IMusicService>().FromMethod(() => Container.InstantiatePrefabForComponent<IMusicService>(_musicService)).AsSingle();
+        }
+        
         private void BindInputService()
         {
             Container.Bind<IInputService>().To<StandaloneInputService>().AsSingle();
@@ -78,6 +89,7 @@ namespace Code.Infrastructure.Installers
             Container.Bind<IPhysicsService>().To<PhysicsService>().AsSingle();
             Container.Bind<ITimeService>().To<UnityTimeService>().AsSingle();
             Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
+            Container.Bind<IVibrationService>().To<VibrationService>().AsSingle();
         }
 
         private void BindSystemFactory()
